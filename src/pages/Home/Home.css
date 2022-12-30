@@ -1,0 +1,8 @@
+.homeContainer {
+  background-color: #c3ebf7;
+}
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
