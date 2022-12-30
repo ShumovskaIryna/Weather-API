@@ -1,0 +1,12 @@
+.card {
+    align-items: center;
+    width: 300px;
+    margin: 10px;
+    display: inline-block;
+    justify-content: space-between;
+    transition: box-shadow 500ms ease;
+}
+
+.card:hover {
+    box-shadow: 4px 4px 10px 3px grey;
+}
