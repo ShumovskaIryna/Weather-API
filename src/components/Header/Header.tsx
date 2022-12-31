@@ -1,12 +1,13 @@
 import React from 'react'
 import SearchIcon from '@mui/icons-material/Search'
 import './Header.css'
+import { NavLink } from 'react-router-dom'
 
 function Header (): JSX.Element {
   return (
     <div className="headerContainer">
       <div className="headerLeft">
-        <span className="logo">Weather</span>
+        <span className="logo"><NavLink to="/">Weather</NavLink></span>
       </div>
       <div className="headerCenter">
         <div className="searchbar">

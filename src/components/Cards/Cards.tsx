@@ -2,6 +2,7 @@ import React from 'react'
 import CityCard from '../Card/Card'
 import './Cards.css'
 import Grid from '@mui/material/Grid'
+import { NavLink } from 'react-router-dom'
 
 function Cards (): JSX.Element {
   const cities = [
@@ -34,7 +35,9 @@ function Cards (): JSX.Element {
             justifyContent="center"
             alignItems="center" color="text.secondary">
         {cities.map((city) => (
-          <CityCard key={city.id}/>
+          <NavLink to="/details" key={city.id}>
+            <CityCard key={city.id} />
+          </NavLink>
         ))}
         </Grid>
       </div>
