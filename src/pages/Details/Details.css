@@ -1,11 +1,8 @@
-/* .detail-card {
-  position: relative;
-  width: 100%;
-  height: 80%;
-  cursor: pointer;
-} */
-/* .container{
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 5%;
-} */
+.detailContainer {
+  background-color: #c3ebf7;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
