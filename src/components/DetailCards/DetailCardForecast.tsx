@@ -1,15 +1,15 @@
 import React from 'react'
 import Card from '@mui/material/Card'
-import { indigo } from '@mui/material/colors'
 import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import { indigo } from '@mui/material/colors'
 import HourlyForecast from './HourlyForecast'
 import DailyForecast from './DailyForecast'
 
-function CityCard (): JSX.Element {
+function DetailCardForecast (): JSX.Element {
   return (
-    <div>
+    <div className="shortContainer">
         <Card sx={{ bgcolor: indigo[50], mt: 1, mb: 5 }}>
             <CardContent sx={{ ml: 1 }}>
                 <Grid container spacing={1} direction="row"
@@ -72,4 +72,4 @@ function CityCard (): JSX.Element {
   )
 }
 
-export default CityCard
+export default DetailCardForecast
