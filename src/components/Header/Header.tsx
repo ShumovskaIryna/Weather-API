@@ -7,7 +7,7 @@ function Header (): JSX.Element {
   return (
     <div className="headerContainer">
       <div className="headerLeft">
-        <span className="logo"><NavLink to="/">Weather</NavLink></span>
+        <NavLink to="/" className="logo">Weather</NavLink>
       </div>
       <div className="headerCenter">
         <div className="searchbar">

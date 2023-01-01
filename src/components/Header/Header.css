@@ -21,6 +21,7 @@
   font-weight: bold;
   color: white;
   cursor: pointer;
+  text-decoration-line: none;
 }
 
 .headerCenter {
