@@ -1,12 +1,12 @@
 import React from 'react'
 import Card from '@mui/material/Card'
-import { yellow, indigo, grey } from '@mui/material/colors'
 import CardContent from '@mui/material/CardContent'
+import Grid from '@mui/material/Grid'
+import { yellow, indigo, grey } from '@mui/material/colors'
 import Typography from '@mui/material/Typography'
 import LightModeIcon from '@mui/icons-material/LightMode'
-import Grid from '@mui/material/Grid'
 
-function CityCard (): JSX.Element {
+function DetailCardMain (): JSX.Element {
   return (
     <div>
         <Card sx={{ bgcolor: indigo[50] }}>
@@ -45,4 +45,4 @@ function CityCard (): JSX.Element {
   )
 }
 
-export default CityCard
+export default DetailCardMain
