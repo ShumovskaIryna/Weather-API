@@ -2,7 +2,7 @@ import React from 'react'
 import './CityCard.css'
 import Card from '@mui/material/Card'
 import IconButton from '@mui/material/IconButton'
-import { yellow, red, indigo, grey } from '@mui/material/colors'
+import { yellow, red, grey } from '@mui/material/colors'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
@@ -20,7 +20,7 @@ export interface Item {
 function CityCard (): JSX.Element {
   return (
     <div className="card">
-        <Card sx={{ bgcolor: indigo[50] }}>
+        <Card>
             <CardContent sx={{ ml: 1 }}>
                 <Grid container spacing={1} direction="row"
                     justifyContent="center"
