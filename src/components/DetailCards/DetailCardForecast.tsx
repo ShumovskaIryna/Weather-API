@@ -3,14 +3,13 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import { indigo } from '@mui/material/colors'
 import HourlyForecast from './HourlyForecast'
 import DailyForecast from './DailyForecast'
 
 function DetailCardForecast (): JSX.Element {
   return (
     <div>
-        <Card sx={{ bgcolor: indigo[50], mt: 1, mb: 5 }}>
+        <Card sx={{ mt: 1, mb: 5 }}>
             <CardContent sx={{ ml: 1 }}>
                 <Grid container spacing={1} direction="row"
                     justifyContent="center"

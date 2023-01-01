@@ -2,9 +2,8 @@ import React from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
-import { indigo } from '@mui/material/colors'
 import ThisDayItem from './ThisDayItem'
-import './DetailInfo.css'
+import '../../pages/Details/Details.css'
 
 export interface Item {
   iconId: string
@@ -38,12 +37,12 @@ function DetailCardCondition (): JSX.Element {
 
   return (
       <div>
-          <Card sx={{ bgcolor: indigo[50], p: 2 }}>
+          <Card sx={{ p: 2 }}>
               <CardContent sx={{ ml: 1 }}>
                     <Grid container spacing={1}>
                         <Grid item xs={12}>
                             {items.map((item: Item) => (
-                                <ThisDayItem key={item.iconId} item={item} />
+                              <ThisDayItem key={item.iconId} item={item} />
                             ))}
                         </Grid>
                     </Grid>

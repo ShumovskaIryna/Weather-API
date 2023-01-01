@@ -3,6 +3,7 @@ import { Item } from './DetailCardCondition'
 import Typography from '@mui/material/Typography'
 import IndicatorSvgSelector from '../../assets/icons/indicators/IndicatorSvgSelector'
 import Grid from '@mui/material/Grid'
+import '../../pages/Details/Details.css'
 
 interface Props {
   item: Item
