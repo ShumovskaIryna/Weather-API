@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import Grid from '@mui/material/Grid'
 
-function CityCard (): JSX.Element {
+function DailyForecast (): JSX.Element {
   return (
     <div>
         <Card sx={{ bgcolor: indigo[50] }}>
@@ -45,4 +45,4 @@ function CityCard (): JSX.Element {
   )
 }
 
-export default CityCard
+export default DailyForecast
