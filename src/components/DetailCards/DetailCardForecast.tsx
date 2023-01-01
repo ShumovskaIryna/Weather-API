@@ -9,7 +9,7 @@ import DailyForecast from './DailyForecast'
 
 function DetailCardForecast (): JSX.Element {
   return (
-    <div className="shortContainer">
+    <div>
         <Card sx={{ bgcolor: indigo[50], mt: 1, mb: 5 }}>
             <CardContent sx={{ ml: 1 }}>
                 <Grid container spacing={1} direction="row"

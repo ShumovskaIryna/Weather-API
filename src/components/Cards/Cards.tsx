@@ -1,8 +1,8 @@
 import React from 'react'
-import CityCard from '../Card/Card'
-import './Cards.css'
+import CityCard from '../Card/CityCard'
 import Grid from '@mui/material/Grid'
 import { NavLink } from 'react-router-dom'
+import './Cards.css'
 
 function Cards (): JSX.Element {
   const cities = [
