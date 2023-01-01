@@ -1,5 +1,5 @@
 import React from 'react'
-import './Card.css'
+import './CityCard.css'
 import Card from '@mui/material/Card'
 import IconButton from '@mui/material/IconButton'
 import { yellow, red, indigo, grey } from '@mui/material/colors'
@@ -10,6 +10,12 @@ import Typography from '@mui/material/Typography'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep'
 import Grid from '@mui/material/Grid'
+
+export interface Item {
+  iconId: string
+  name: string
+  value: string
+}
 
 function CityCard (): JSX.Element {
   return (
