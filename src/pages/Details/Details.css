@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .detailContainer {
   background-color: #c3ebf7;
   position: relative;
