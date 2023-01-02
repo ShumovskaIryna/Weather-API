@@ -2,8 +2,7 @@ import React from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
-import ThisDayItem from './ThisDayItem'
-import '../../pages/Details/Details.css'
+import ThisDayItem from '../DetailCardCondition/ThisDayItem'
 
 export interface Item {
   iconId: string
@@ -36,19 +35,19 @@ function DetailCardCondition (): JSX.Element {
   ]
 
   return (
-      <div>
-          <Card sx={{ p: 2 }}>
-              <CardContent sx={{ ml: 1 }}>
-                    <Grid container spacing={1}>
-                        <Grid item xs={12}>
-                            {items.map((item: Item) => (
-                              <ThisDayItem key={item.iconId} item={item} />
-                            ))}
-                        </Grid>
-                    </Grid>
-              </CardContent>
-          </Card>
-      </div>
+    <div>
+      <Card sx={{ p: 2 }}>
+        <CardContent sx={{ ml: 1 }}>
+          <Grid container spacing={1}>
+            <Grid item xs={12}>
+              {items.map((item: Item) => (
+                <ThisDayItem key={item.iconId} item={item} />
+              ))}
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+    </div>
   )
 }
 

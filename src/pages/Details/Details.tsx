@@ -5,9 +5,9 @@ import Grid from '@mui/material/Grid'
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep'
-import DetailCardMain from '../../components/DetailCards/DetailCardMain'
-import DetailCardCondition from '../../components/DetailCards/DetailCardCondition'
-import DetailCardForecast from '../../components/DetailCards/DetailCardForecast'
+import DetailCardMain from '../../components/DetailCardMain/DetailCardMain'
+import DetailCardCondition from '../../components/DetailCardCondition/DetailCardCondition'
+import DetailCardForecast from '../../components/DetailCardForecast/DetailCardForecast'
 import './Details.css'
 
 interface IAppProps {}

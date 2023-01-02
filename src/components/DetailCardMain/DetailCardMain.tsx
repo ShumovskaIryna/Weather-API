@@ -14,7 +14,7 @@ function DetailCardMain (): JSX.Element {
                 <Grid container spacing={1} direction="row"
                     justifyContent="center"
                     alignItems="center" color="text.secondary">
-                    <Typography sx={{ mt: 1, mb: 1, fontSize: 20 }} color="text.secondary">
+                    <Typography sx={{ mt: 1, mb: 1, fontSize: 20 }}>
                         Kyiv
                     </Typography>
                 </Grid>
@@ -31,10 +31,10 @@ function DetailCardMain (): JSX.Element {
                         <LightModeIcon sx={{ mr: 1.5, color: yellow[600], fontSize: 100 }}/>
                     </Grid>
                     <Grid item xs={5}>
-                        <Typography sx={{ mb: 1.5, fontSize: 20 }} color="text.secondary">
+                        <Typography sx={{ mb: 1.5, fontSize: 20 }}>
                             Today
                         </Typography>
-                        <Typography sx={{ mb: 1.5, fontSize: 16 }} color="text.secondary">
+                        <Typography sx={{ mb: 1.5, fontSize: 16 }}>
                             Sunny
                         </Typography>
                     </Grid>
