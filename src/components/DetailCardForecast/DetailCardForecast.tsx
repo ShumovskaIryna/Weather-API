@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import HourForecast from '../HourForecast/HourForecast'
 import DayForecast from '../DayForecast/DayForecast'
+import './DetailCardForecast.css'
 
 interface Props {}
 
@@ -120,39 +121,39 @@ function DetailCardForecast (props: Props): JSX.Element {
     }
   ]
   return (
-    <div>
-        <Card sx={{ mt: 1, mb: 5 }}>
-            <CardContent sx={{ ml: 1 }}>
-                <Grid container spacing={1} direction="row"
-                    justifyContent="center"
-                    alignItems="center" color="text.secondary">
-                    <Typography sx={{ mt: 1, mb: 2, fontSize: 20 }}>
-                       Hourly forecast
-                    </Typography>
-                </Grid>
-                <Grid container spacing={1} direction="row"
-                    justifyContent="center"
-                    alignItems="center" color="text.secondary">
-                    {hours.map((hour: Hour) => (
-                        <HourForecast hour={hour} key={hour.hour} />
-                    ))}
-                </Grid>
-                <Grid container spacing={1} direction="row"
-                    justifyContent="center"
-                    alignItems="center" color="text.secondary">
-                    <Typography sx={{ mt: 3, mb: 2, fontSize: 20 }}>
-                        Daily forecast
-                    </Typography>
-                </Grid>
-                <Grid container spacing={1} direction="row"
-                    justifyContent="center"
-                    alignItems="center" color="text.secondary">
-                    {days.map((day: Day) => (
-                        <DayForecast day={day} key={day.day} />
-                    ))}
-                </Grid>
-            </CardContent>
-        </Card>
+    <div className="card_third">
+      <Card sx={{ mt: 1, mb: 5 }}>
+          <CardContent sx={{ ml: 1 }}>
+              <Grid container spacing={1} direction="row"
+                  justifyContent="center"
+                  alignItems="center" color="text.secondary">
+                  <Typography sx={{ mt: 1, mb: 2, fontSize: 20 }}>
+                      Hourly forecast
+                  </Typography>
+              </Grid>
+              <Grid container spacing={1} direction="row"
+                  justifyContent="center"
+                  alignItems="center" color="text.secondary">
+                  {hours.map((hour: Hour) => (
+                      <HourForecast hour={hour} key={hour.hour} />
+                  ))}
+              </Grid>
+              <Grid container spacing={1} direction="row"
+                  justifyContent="center"
+                  alignItems="center" color="text.secondary">
+                  <Typography sx={{ mt: 3, mb: 2, fontSize: 20 }}>
+                      Daily forecast
+                  </Typography>
+              </Grid>
+              <Grid container spacing={1} direction="row"
+                  justifyContent="center"
+                  alignItems="center" color="text.secondary">
+                  {days.map((day: Day) => (
+                      <DayForecast day={day} key={day.day} />
+                  ))}
+              </Grid>
+          </CardContent>
+      </Card>
     </div>
   )
 }

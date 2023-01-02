@@ -3,6 +3,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 import ThisDayItem from '../DetailCardCondition/ThisDayItem'
+import './DetailCardCondition.css'
 
 export interface Item {
   iconId: string
@@ -35,8 +36,8 @@ function DetailCardCondition (): JSX.Element {
   ]
 
   return (
-    <div>
-      <Card sx={{ p: 2 }}>
+    <div className="card_second">
+      <Card sx={{ pt: 3, pb: 2 }}>
         <CardContent sx={{ ml: 1 }}>
           <Grid container spacing={1}>
             <Grid item xs={12}>

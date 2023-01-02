@@ -5,10 +5,11 @@ import Grid from '@mui/material/Grid'
 import { yellow, grey } from '@mui/material/colors'
 import Typography from '@mui/material/Typography'
 import LightModeIcon from '@mui/icons-material/LightMode'
+import './DetailCardMain.css'
 
 function DetailCardMain (): JSX.Element {
   return (
-    <div>
+    <div className="card_first">
         <Card>
             <CardContent sx={{ ml: 1 }}>
                 <Grid container spacing={1} direction="row"

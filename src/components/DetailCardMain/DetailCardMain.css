@@ -1,0 +1,7 @@
+.card_first {
+    align-items: center;
+    width: 300px;
+    margin: 5px;
+    display: inline-block;
+    justify-content: center;
+}
