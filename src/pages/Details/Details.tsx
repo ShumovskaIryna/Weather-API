@@ -18,37 +18,25 @@ export const Details: React.FC<IAppProps> = (props) => {
       <div className="wrapper">
           <Header/>
       </div>
-        <div className="container">
-        <Grid container spacing={2} direction="row"
-            justifyContent="center"
-            alignItems="center">
-            <Grid item xs={2}>
-                <Button size="small">Refresh</Button>
-            </Grid>
-            <Grid item xs={1}>
-                <IconButton aria-label="settings">
-                    <DeleteSweepIcon sx={{ color: red[400], fontSize: 24 }}/>
-                </IconButton>
-            </Grid>
-          </Grid>
-          <Grid container spacing={1} direction="row"
-            justifyContent="center"
-            alignItems="center">
-            <Grid item xs={3}>
-              <DetailCardMain />
-            </Grid>
-            <Grid item xs={5}>
-              <DetailCardCondition />
-            </Grid>
-          </Grid>
-          <Grid container spacing={1} direction="row"
-            justifyContent="center"
-            alignItems="center">
-            <Grid item xs={8}>
-              <DetailCardForecast />
-            </Grid>
-          </Grid>
-        </div>
+      <Grid container spacing={3} direction="row"
+        justifyContent="center"
+        alignItems="center">
+        <Grid item xs={2}>
+            <Button size="small">Refresh</Button>
+        </Grid>
+        <Grid item xs={1}>
+            <IconButton aria-label="settings">
+                <DeleteSweepIcon sx={{ color: red[400], fontSize: 24 }}/>
+            </IconButton>
+        </Grid>
+      </Grid>
+      <Grid container spacing={1} direction="row"
+        justifyContent="center"
+        alignItems="center" color="text.secondary">
+          <DetailCardMain />
+          <DetailCardCondition />
+          <DetailCardForecast />
+      </Grid>
     </div>
   )
 }
