@@ -4,26 +4,31 @@ import Grid from '@mui/material/Grid'
 import { NavLink } from 'react-router-dom'
 import './Cards.css'
 
+export interface City {
+  cityId: string
+  title: string
+}
+
 function Cards (): JSX.Element {
   const cities = [
     {
-      id: 1,
+      cityId: '1',
       title: 'London'
     },
     {
-      id: 2,
+      cityId: '2',
       title: 'Sydney'
     },
     {
-      id: 3,
+      cityId: '3',
       title: 'Tokyo'
     },
     {
-      id: 4,
+      cityId: '4',
       title: 'Toronto'
     },
     {
-      id: 5,
+      cityId: '5',
       title: 'Paris'
     }
   ]
@@ -34,9 +39,9 @@ function Cards (): JSX.Element {
       <Grid container spacing={1} direction="row"
             justifyContent="center"
             alignItems="center" color="text.secondary">
-        {cities.map((city) => (
-          <NavLink to="/details" key={city.id}>
-            <CityCard key={city.id} />
+        {cities.map((city: City) => (
+          <NavLink to="/details" key={city.cityId}>
+            <CityCard key={city.cityId} city={city}/>
           </NavLink>
         ))}
         </Grid>

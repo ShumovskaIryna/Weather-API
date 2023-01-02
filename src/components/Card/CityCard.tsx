@@ -10,14 +10,14 @@ import Typography from '@mui/material/Typography'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep'
 import Grid from '@mui/material/Grid'
+import { City } from '../Cards/Cards'
 
-export interface Item {
-  iconId: string
-  name: string
-  value: string
+interface Props {
+  city: City
 }
 
-function CityCard (): JSX.Element {
+function CityCard ({ city }: Props): JSX.Element {
+  const { title } = city
   return (
     <div className="card">
         <Card>
@@ -26,7 +26,7 @@ function CityCard (): JSX.Element {
                     justifyContent="center"
                     alignItems="center" color="text.secondary">
                     <Typography sx={{ mt: 1, mb: 1, fontSize: 20 }} color="text.secondary">
-                        Kyiv
+                        {title}
                     </Typography>
                 </Grid>
                 <Grid container spacing={2}>
