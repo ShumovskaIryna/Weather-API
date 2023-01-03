@@ -1,4 +1,4 @@
-import WeatherService from '../../services/WeatherService'
+import { WeatherService } from '../../services/WeatherService'
 import { currentWeatherSlice } from '../slices/currentWeatherSlice'
 import { AppDispatch } from '../store'
 
