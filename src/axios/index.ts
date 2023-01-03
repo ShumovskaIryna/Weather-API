@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import axios from 'axios'
 
 const api = axios.create({
@@ -6,8 +7,7 @@ const api = axios.create({
 
 api.interceptors.request.use(config => {
   config.url =
-    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-    config.url + '$appid=' + process.env.REACT_APP_API_KEY
+    config.url + '&units=metric' + '&appid=' + process.env.REACT_APP_API_KEY
   return config
 })
 
