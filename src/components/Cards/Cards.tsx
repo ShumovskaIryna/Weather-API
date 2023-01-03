@@ -1,49 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useCustomDispatch, useCustomSelector } from '../../hooks/store'
+import { fetchCurrentWeather } from '../../store/thunks/fetchCurrentWeather'
+import { selectCurrentWeatherData } from '../../store/selectors'
 import CityCard from '../Card/CityCard'
 import Grid from '@mui/material/Grid'
 import { NavLink } from 'react-router-dom'
 import './Cards.css'
 
-export interface City {
-  cityId: string
-  title: string
-}
+interface Props {}
+export const Cards: React.FC<Props> = (props) => {
+  const dispatch = useCustomDispatch()
+  const { weather } = useCustomSelector(selectCurrentWeatherData)
 
-function Cards (): JSX.Element {
-  const cities = [
-    {
-      cityId: '1',
-      title: 'London'
-    },
-    {
-      cityId: '2',
-      title: 'Sydney'
-    },
-    {
-      cityId: '3',
-      title: 'Tokyo'
-    },
-    {
-      cityId: '4',
-      title: 'Toronto'
-    },
-    {
-      cityId: '5',
-      title: 'Paris'
-    }
-  ]
-
+  useEffect(() => {
+    void dispatch(fetchCurrentWeather('lviv'))
+  }, [])
   return (
     <div className="cards">
       <div className="container">
       <Grid container spacing={1} direction="row"
             justifyContent="center"
             alignItems="center" color="text.secondary">
-        {cities.map((city: City) => (
-          <NavLink to="/details" key={city.cityId}>
-            <CityCard key={city.cityId} city={city}/>
+        {/* {cities.map((city: City) => ( */}
+          <NavLink to="/details">
+            <CityCard weather={weather}/>
           </NavLink>
-        ))}
+        {/* ))} */}
         </Grid>
       </div>
     </div>
