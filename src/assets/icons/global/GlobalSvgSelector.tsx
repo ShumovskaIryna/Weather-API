@@ -328,6 +328,47 @@ export default function GlobalSvgSelector ({ id }: Props): JSX.Element {
         </svg>
       )
     default:
-      return <div></div>
+      return (
+        <svg
+          width="90"
+          height="90"
+          viewBox="0 0 48 48"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14 28C9.582 28 6 24.418 6 20C6 15.582 9.582 12 14 12C14.834 12 15.636 12.128 16.392 12.364C17.518 8.68 20.946 6 25 6C29.97 6 34 10.03 34 15C34 15.47 33.964 15.93 33.894 16.38C34.55 16.134 35.258 16 36 16C39.314 16 42 18.686 42 22C42 25.314 39.314 28 36 28H14Z"
+            fill="url(#paint6_linear)"
+          />
+          <path
+            d="M16 15C16 19.97 20.03 24 25 24C29.502 24 33.23 20.696 33.894 16.38C34.55 16.134 35.258 16 36 16C39.314 16 42 18.686 42 22C42 25.314 39.314 28 36 28H14C9.582 28 6 24.418 6 20C6 15.582 9.582 12 14 12C14.834 12 15.636 12.128 16.392 12.364C16.136 13.198 16 14.082 16 15Z"
+            fill="url(#paint1_radial)"
+          />
+          <defs>
+            <linearGradient
+              id="paint6_linear"
+              x1="24"
+              y1="6"
+              x2="24"
+              y2="28"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stopColor="#9FC7FF" />
+              <stop offset="1" stopColor="#9BC1F5" />
+            </linearGradient>
+            <radialGradient
+              id="paint1_radial"
+              cx="0"
+              cy="0"
+              r="1"
+              gradientUnits="userSpaceOnUse"
+              gradientTransform="translate(10.7539 -24.6966) rotate(-90) scale(20.9574 6.69705)"
+            >
+              <stop stopColor="#486DA8" stopOpacity="0.4" />
+              <stop offset="1" stopColor="#486DA8" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+        </svg>
+      )
   }
 }
