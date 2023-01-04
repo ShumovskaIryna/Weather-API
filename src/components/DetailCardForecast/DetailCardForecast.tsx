@@ -3,20 +3,11 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import HourForecast from '../HourForecast/HourForecast'
-import DayForecast from '../DayForecast/DayForecast'
 import './DetailCardForecast.css'
+import { indigo, grey } from '@mui/material/colors'
+import GlobalSvgSelector from '../../assets/icons/global/GlobalSvgSelector'
 
 interface Props {}
-
-export interface Day {
-  day: string
-  day_info: string
-  icon_id: string
-  temp_day: string
-  temp_night: string
-  info: string
-}
 
 export interface Hour {
   hour: string
@@ -25,64 +16,6 @@ export interface Hour {
 }
 
 function DetailCardForecast (props: Props): JSX.Element {
-  const days: Day[] = [
-    {
-      day: 'Сегодня',
-      day_info: '28 авг',
-      icon_id: 'sun',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Солнечно'
-    },
-    {
-      day: 'Завтра',
-      day_info: '29 авг',
-      icon_id: 'small_rain_sun',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Небольшой дождь, солнце'
-    },
-    {
-      day: 'Ср',
-      day_info: '30 авг',
-      icon_id: 'small_rain',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Небольшой дождь'
-    },
-    {
-      day: 'Чт',
-      day_info: '28 авг',
-      icon_id: 'mainly_cloudy',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Облачно'
-    },
-    {
-      day: 'Пт',
-      day_info: '28 авг',
-      icon_id: 'rain',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Дождь'
-    },
-    {
-      day: 'Сб',
-      day_info: '28 авг',
-      icon_id: 'sun',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Солнечно'
-    },
-    {
-      day: 'Вс',
-      day_info: '28 авг',
-      icon_id: 'sun',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Солнечно'
-    }
-  ]
   const hours: Hour[] = [
     {
       hour: '12:00',
@@ -135,21 +68,27 @@ function DetailCardForecast (props: Props): JSX.Element {
                   justifyContent="center"
                   alignItems="center" color="text.secondary">
                   {hours.map((hour: Hour) => (
-                      <HourForecast hour={hour} key={hour.hour} />
-                  ))}
-              </Grid>
-              <Grid container spacing={1} direction="row"
-                  justifyContent="center"
-                  alignItems="center" color="text.secondary">
-                  <Typography sx={{ mt: 3, mb: 2, fontSize: 20 }}>
-                      Daily forecast
-                  </Typography>
-              </Grid>
-              <Grid container spacing={1} direction="row"
-                  justifyContent="center"
-                  alignItems="center" color="text.secondary">
-                  {days.map((day: Day) => (
-                      <DayForecast day={day} key={day.day} />
+                          <div className="day_card" key={hour.hour}>
+                          <Card sx={{ bgcolor: indigo[50] }}>
+                              <CardContent>
+                                  <Grid container spacing={1} direction="row">
+                                      <Typography sx={{ mb: 1, fontSize: 12 }}>
+                                          {hour.hour}
+                                      </Typography>
+                                  </Grid>
+                                  <Grid container spacing={2} direction="row">
+                                      <Grid item xs={5}>
+                                          <Typography sx={{ mt: 1, fontSize: 16, color: grey[600] }}>
+                                              {hour.temp_day}
+                                          </Typography>
+                                      </Grid>
+                                      <Grid item xs={2}>
+                                          <GlobalSvgSelector id={hour.icon_id} />
+                                      </Grid>
+                                  </Grid>
+                              </CardContent>
+                          </Card>
+                      </div>
                   ))}
               </Grid>
           </CardContent>
