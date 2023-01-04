@@ -1,5 +1,5 @@
 import React from 'react'
-import { Item } from './DetailCardCondition'
+import { Item } from '../DetailCardCondition/DetailCardCondition'
 import Typography from '@mui/material/Typography'
 import IndicatorSvgSelector from '../../assets/icons/indicators/IndicatorSvgSelector'
 import Grid from '@mui/material/Grid'
