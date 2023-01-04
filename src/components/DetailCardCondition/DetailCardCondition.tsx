@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
-import ThisDayItem from '../DetailCardCondition/ThisDayItem'
+import ThisDayItem from '../ThisDayItem/ThisDayItem'
 import './DetailCardCondition.css'
 
 export interface Item {
