@@ -29,7 +29,7 @@ function DetailCardCondition ({ weather }: Props): JSX.Element {
                         </Grid>
                         <Grid item xs={10}>
                             <Typography sx={{ mb: 2, fontSize: 14 }} color="text.secondary">
-                                Temperature : {Math.floor(weather.main.temp)}°, real fell {Math.floor(weather.main.feels_like)}°
+                                Temperature : {Math.floor(weather.main.temp)}°C, real fell {Math.floor(weather.main.feels_like)}°C
                             </Typography>
                         </Grid>
                     </Grid>

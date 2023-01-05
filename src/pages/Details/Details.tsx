@@ -20,7 +20,7 @@ export const Details: React.FC<Props> = (props) => {
   const { weather } = useCustomSelector(selectCurrentWeatherData)
 
   useEffect(() => {
-    void dispatch(fetchCurrentWeather('kyiv'))
+    void dispatch(fetchCurrentWeather('lviv'))
   }, [])
 
   return (

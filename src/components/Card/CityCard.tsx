@@ -27,16 +27,16 @@ function CityCard ({ weather }: Props): JSX.Element {
                     justifyContent="center"
                     alignItems="center" color="text.secondary">
                     <Typography sx={{ mt: 1, mb: 1, fontSize: 20 }} color="text.secondary">
-                        {weather.name}
+                        {weather.name}, {weather.sys.country}
                     </Typography>
                 </Grid>
                 <Grid container spacing={2}>
                     <Grid item xs={4}>
                         <Typography sx={{ fontSize: 44, color: grey[800] }}>
-                            {Math.floor(weather.main.temp)}°
+                            {Math.floor(weather.main.temp)}°C
                         </Typography>
                         <Typography sx={{ fontSize: 32, color: grey[600] }}>
-                            {Math.floor(weather.main.feels_like)}°
+                            {Math.floor(weather.main.feels_like)}°C
                         </Typography>
                     </Grid>
                     <Grid item xs={8}>
