@@ -31,7 +31,7 @@ function CityCard ({ weather }: Props): JSX.Element {
                     </Typography>
                 </Grid>
                 <Grid container spacing={2}>
-                    <Grid item xs={5}>
+                    <Grid item xs={4}>
                         <Typography sx={{ fontSize: 44, color: grey[800] }}>
                             {Math.floor(weather.main.temp)}°
                         </Typography>
@@ -39,32 +39,36 @@ function CityCard ({ weather }: Props): JSX.Element {
                             {Math.floor(weather.main.feels_like)}°
                         </Typography>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={8}>
                         <GlobalSvgSelector id={weather.weather[0].icon}/>
                     </Grid>
-                    <Grid item xs={5}>
+                    <Grid item xs={7}>
                         <Typography sx={{ mb: 1.5, fontSize: 20 }} color="text.secondary">
-                            Today {new Date(weather.dt * ONE_SECOND_IN_MILLISECOND +
+                            Today
+                        </Typography>
+                        <Typography sx={{ mb: 1.5, fontSize: 18 }} color="text.secondary">
+                            {new Date(weather.dt * ONE_SECOND_IN_MILLISECOND +
                             (weather.timezone * ONE_SECOND_IN_MILLISECOND)).toLocaleString('en-US',
-                          {
-                            month: 'long',
-                            day: 'numeric',
-                            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
-                          })}
+                              {
+                                month: 'long',
+                                day: 'numeric',
+                                timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+                              })
+                            }
                         </Typography>
                         <Typography sx={{ mb: 1.5, fontSize: 16 }} color="text.secondary">
                             {weather.weather[0].description}
                         </Typography>
                     </Grid>
-                    <Grid item xs={6}>
-                        <Typography sx={{ mb: 1.5, fontSize: 12 }} color="text.secondary">
-                            Wind: {Math.floor(weather.wind.speed)} m/s
+                    <Grid item xs={5}>
+                        <Typography sx={{ mb: 2, fontSize: 10 }} color="text.secondary">
+                             Pressure : {Math.floor(weather.main.pressure)} mm
                         </Typography>
-                        <Typography sx={{ mb: 1.5, fontSize: 12 }} color="text.secondary">
-                            Pressure: {Math.floor(weather.main.pressure)} mm
+                        <Typography sx={{ mb: 2, fontSize: 10 }} color="text.secondary">
+                            Humidity : {Math.floor(weather.main.humidity)} %
                         </Typography>
-                        <Typography sx={{ mb: 1.5, fontSize: 12 }} color="text.secondary">
-                            Humidity: {Math.floor(weather.main.humidity)} %
+                        <Typography sx={{ mb: 2, fontSize: 10 }} color="text.secondary">
+                            Wind speed : {Math.floor(weather.wind.speed)} km/h
                         </Typography>
                     </Grid>
                 </Grid>

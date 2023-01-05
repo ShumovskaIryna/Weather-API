@@ -21,11 +21,9 @@ export const Cards: React.FC<Props> = (props) => {
       <Grid container spacing={1} direction="row"
             justifyContent="center"
             alignItems="center" color="text.secondary">
-        {/* {cities.map((city: City) => ( */}
           <NavLink to="/details">
             <CityCard weather={weather}/>
           </NavLink>
-        {/* ))} */}
         </Grid>
       </div>
     </div>
