@@ -2,41 +2,56 @@ import React from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
-import { yellow, grey } from '@mui/material/colors'
+import { grey } from '@mui/material/colors'
 import Typography from '@mui/material/Typography'
-import LightModeIcon from '@mui/icons-material/LightMode'
+import { Weather } from '../../store/types/types'
+import GlobalSvgSelector from '../../assets/icons/global/GlobalSvgSelector'
 import './DetailCardMain.css'
 
-function DetailCardMain (): JSX.Element {
+interface Props {
+  weather: Weather
+}
+
+const ONE_SECOND_IN_MILLISECOND = 1000
+
+function DetailCardMain ({ weather }: Props): JSX.Element {
   return (
     <div className="card_first">
         <Card>
-            <CardContent sx={{ ml: 1 }}>
+            <CardContent sx={{ ml: 2 }}>
                 <Grid container spacing={1} direction="row"
                     justifyContent="center"
                     alignItems="center" color="text.secondary">
-                    <Typography sx={{ mt: 1, mb: 1, fontSize: 20 }}>
-                        Kyiv
+                    <Typography sx={{ mt: 1, fontSize: 20 }}>
+                        {weather.name}
                     </Typography>
                 </Grid>
-                <Grid container spacing={2}>
-                    <Grid item xs={5}>
-                        <Typography sx={{ fontSize: 40, color: grey[800] }}>
-                            +20°
+                <Grid container spacing={1}>
+                    <Grid item xs={4}>
+                        <Typography sx={{ fontSize: 50, color: grey[800] }}>
+                            {Math.floor(weather.main.temp)}°
                         </Typography>
-                        <Typography sx={{ fontSize: 32, color: grey[600] }}>
-                            +18°
+                        <Typography sx={{ fontSize: 40, color: grey[600] }}>
+                            {Math.floor(weather.main.feels_like)}°
                         </Typography>
                     </Grid>
-                    <Grid item xs={6}>
-                        <LightModeIcon sx={{ mr: 1.5, color: yellow[600], fontSize: 100 }}/>
+                    <Grid item xs={8}>
+                        <GlobalSvgSelector id={weather.weather[0].icon}/>
                     </Grid>
-                    <Grid item xs={5}>
-                        <Typography sx={{ mb: 1.5, fontSize: 20 }}>
-                            Today
+                    <Grid item xs={12}>
+                        <Typography sx={{ mb: 1, fontSize: 18, color: grey[600] }}>
+                            Today {new Date(weather.dt * ONE_SECOND_IN_MILLISECOND +
+                            (weather.timezone * ONE_SECOND_IN_MILLISECOND)).toLocaleString('en-US',
+                          {
+                            month: 'long',
+                            day: 'numeric',
+                            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+                          })}
                         </Typography>
-                        <Typography sx={{ mb: 1.5, fontSize: 16 }}>
-                            Sunny
+                        </Grid>
+                        <Grid item xs={12}>
+                        <Typography sx={{ mb: 1, fontSize: 14 }}>
+                            {weather.weather[0].description}
                         </Typography>
                     </Grid>
                 </Grid>

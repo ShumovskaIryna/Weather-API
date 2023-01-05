@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../../components/Header/Header'
 import { red } from '@mui/material/colors'
 import Grid from '@mui/material/Grid'
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep'
+import { useCustomDispatch, useCustomSelector } from '../../hooks/store'
+import { fetchCurrentWeather } from '../../store/thunks/fetchCurrentWeather'
+import { selectCurrentWeatherData } from '../../store/selectors'
 import DetailCardMain from '../../components/DetailCardMain/DetailCardMain'
 import DetailCardCondition from '../../components/DetailCardCondition/DetailCardCondition'
 import DetailCardForecast from '../../components/DetailCardForecast/DetailCardForecast'
 import './Details.css'
 
-interface IAppProps {}
+interface Props {}
 
-export const Details: React.FC<IAppProps> = (props) => {
+export const Details: React.FC<Props> = (props) => {
+  const dispatch = useCustomDispatch()
+  const { weather } = useCustomSelector(selectCurrentWeatherData)
+
+  useEffect(() => {
+    void dispatch(fetchCurrentWeather('kyiv'))
+  }, [])
+
   return (
     <div className="detailContainer">
       <div className="wrapper">
@@ -33,9 +43,9 @@ export const Details: React.FC<IAppProps> = (props) => {
       <Grid container spacing={1} direction="row"
         justifyContent="center"
         alignItems="center" color="text.secondary">
-          <DetailCardMain />
-          <DetailCardCondition />
-          <DetailCardForecast />
+          <DetailCardMain weather={weather}/>
+          <DetailCardCondition weather={weather}/>
+          <DetailCardForecast weather={weather}/>
       </Grid>
     </div>
   )
