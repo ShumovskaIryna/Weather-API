@@ -1,3 +1,10 @@
+export interface optionType {
+  name: string
+  country: string
+  lat: number
+  lon: number
+}
+
 export interface Weather {
   coord: {
     lon: number

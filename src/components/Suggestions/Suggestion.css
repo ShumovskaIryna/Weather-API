@@ -1,0 +1,25 @@
+.suggestion_bar{
+    position: absolute;
+    top: 60%;
+    left: 35%;
+    background-color: aliceblue;
+    width: auto;
+}
+li {
+    list-style: none;
+    margin-left: -50px;
+}
+.suggestion_list{
+    text-align: start;
+    font-size: medium;
+    width: 100%;
+    background-color: rgb(241, 243, 251);
+    cursor: pointer;
+    padding: 10px 50px;
+    border: none;
+    text-decoration: dotted;
+}
+
+.suggestion_list:hover{
+    background-color: rgb(197, 223, 255);
+}
