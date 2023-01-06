@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
-import { useCustomDispatch, useCustomSelector } from '../../hooks/store'
-import { fetchCurrentWeather } from '../../store/thunks/fetchCurrentWeather'
+import React from 'react'
+import { useCustomSelector } from '../../hooks/store'
 import { selectCurrentWeatherData } from '../../store/selectors'
 import CityCard from '../Card/CityCard'
 import Grid from '@mui/material/Grid'
@@ -8,13 +7,9 @@ import { NavLink } from 'react-router-dom'
 import './Cards.css'
 
 interface Props {}
-export const Cards: React.FC<Props> = (props) => {
-  const dispatch = useCustomDispatch()
+export const CityCards: React.FC<Props> = (props) => {
   const { weather } = useCustomSelector(selectCurrentWeatherData)
 
-  useEffect(() => {
-    void dispatch(fetchCurrentWeather('lviv'))
-  }, [])
   return (
     <div className="cards">
       <div className="container">
@@ -30,4 +25,4 @@ export const Cards: React.FC<Props> = (props) => {
   )
 }
 
-export default Cards
+export default CityCards
