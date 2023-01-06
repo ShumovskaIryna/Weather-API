@@ -1,4 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import {
+  useParams
+} from 'react-router-dom'
+
 import Header from '../../components/Header/Header'
 import { red } from '@mui/material/colors'
 import Grid from '@mui/material/Grid'
@@ -19,20 +23,42 @@ interface Props {}
 export const Details: React.FC<Props> = (props) => {
   const {
     options,
-    city,
     term,
     onOptionSelect,
     onSubmit,
     onInputChange
   } = useForecast()
+
+  const { cityName } = useParams<{ cityName: string }>()
+
   const dispatch = useCustomDispatch()
   const { weather } = useCustomSelector(selectCurrentWeatherData)
 
+  if (cityName != null) {
+    localStorage.setItem(`CITY_${cityName}`, JSON.stringify(weather))
+  }
+
   useEffect(() => {
-    if (city != null) {
-      void dispatch(fetchCurrentWeather(city.name))
+    if (cityName != null) {
+      void dispatch(fetchCurrentWeather(cityName))
     }
-  }, [city])
+  }, [])
+
+  const [city, setCity] = useState('')
+  const addCityHandler = (city: string): void => {
+    console.log(city)
+    setCity((): string => {
+      return city
+    })
+  }
+
+  useEffect(() => {
+    if (cityName != null) {
+      void dispatch(fetchCurrentWeather(cityName))
+
+      window.history.replaceState(null, 'New Page Title', `/details/${cityName}`)
+    }
+  }, [cityName])
 
   return (
     <div className="detailContainer">
@@ -42,6 +68,7 @@ export const Details: React.FC<Props> = (props) => {
           options={options}
           onInputChange={onInputChange}
           onOptionSelect={onOptionSelect}
+          addCity={addCityHandler}
           onSubmit={onSubmit}/>
       </div>
       <Grid container spacing={3} direction="row"

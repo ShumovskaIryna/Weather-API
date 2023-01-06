@@ -26,27 +26,19 @@ const useForecast = () => {
       .catch((e) => console.log({ e }))
   }
 
+  // const [citiesList, setCitiesList] = useState<[]>([])
+
   const onSubmit = (): void => {
-    // if (city == null)
-    // getForecast(city)
+    if (city != null) {
+      setTerm(city.name)
+      setOptions([])
+    }
   }
-
-  // const getForecast = (data: optionType): void => {
-  //   fetch(
-  //     `${BASE_URL}/data/2.5/forecast?lat=${data.lat}&lon=${data.lon}&units=metric&lang=en&appid=${Credential.API_KEY}`
-  //   )
-  //     .then(async (res) => await res.json())
-  //     .then((data) => {
-  //       const forecastData = {
-  //         ...data.city,
-  //         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  //         list: data.list.slice(0, 16)
-  //       }
-
-  //       setForecast(forecastData)
-  //     })
-  //     .catch((e) => console.log({ e }))
-  // }
+  useEffect(() => {
+    if (city != null) {
+      setCity(city)
+    }
+  }, [city])
 
   const onOptionSelect = (option: optionType): void => {
     setCity(option)

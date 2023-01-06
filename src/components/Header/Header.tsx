@@ -13,6 +13,7 @@ interface Props {
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void
   onOptionSelect: (option: optionType) => void
   onSubmit: () => void
+  addCity: (city: string) => void
 }
 
 function Header ({
@@ -20,30 +21,41 @@ function Header ({
   options,
   onInputChange,
   onOptionSelect,
-  onSubmit
+  onSubmit,
+  addCity
 }: Props): JSX.Element {
+  const submitHandler = (event: React.SyntheticEvent): void => {
+    const target = event.target as typeof event.target & {
+      city: { value: string }
+    }
+    addCity(target.city.value)
+  }
+
   return (
     <div className="headerContainer">
       <div className="headerLeft">
         <NavLink to="/" className="logo">Weather</NavLink>
       </div>
       <div className="headerCenter">
+
         <div className="searchbar">
-          <SearchIcon sx={{ mr: 1, ml: 2, fontSize: 28 }} />
-          <input
-            type="text"
-            value={term}
-            className="searchInput"
-            onChange={onInputChange}
-            placeholder="Search for city"
-          />
-          <Suggestions options={options} onSelect={onOptionSelect} />
-          <button
-            className="search_btn"
-            onClick={onSubmit}
-          >
-            Add
-          </button>
+          <form onSubmit={submitHandler}>
+            <SearchIcon sx={{ mr: 1, ml: 2, fontSize: 28 }} />
+            <input
+              type="text"
+              value={term}
+              name="city"
+              className="searchInput"
+              onChange={onInputChange}
+              placeholder="Search for city"
+            />
+            <Suggestions options={options} onSelect={onOptionSelect} />
+            <button
+              className="search_btn"
+            >
+              Add
+            </button>
+          </form>
         </div>
       </div>
     </div>
