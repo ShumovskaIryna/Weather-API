@@ -11,22 +11,38 @@ import { selectCurrentWeatherData } from '../../store/selectors'
 import DetailCardMain from '../../components/DetailCardMain/DetailCardMain'
 import DetailCardCondition from '../../components/DetailCardCondition/DetailCardCondition'
 import DetailCardForecast from '../../components/DetailCardForecast/DetailCardForecast'
+import useForecast from './../../hooks/useForecast'
 import './Details.css'
 
 interface Props {}
 
 export const Details: React.FC<Props> = (props) => {
+  const {
+    options,
+    city,
+    term,
+    onOptionSelect,
+    onSubmit,
+    onInputChange
+  } = useForecast()
   const dispatch = useCustomDispatch()
   const { weather } = useCustomSelector(selectCurrentWeatherData)
 
   useEffect(() => {
-    void dispatch(fetchCurrentWeather('lviv'))
-  }, [])
+    if (city != null) {
+      void dispatch(fetchCurrentWeather(city.name))
+    }
+  }, [city])
 
   return (
     <div className="detailContainer">
       <div className="wrapper">
-          <Header/>
+        <Header
+          term={term}
+          options={options}
+          onInputChange={onInputChange}
+          onOptionSelect={onOptionSelect}
+          onSubmit={onSubmit}/>
       </div>
       <Grid container spacing={3} direction="row"
         justifyContent="center"
