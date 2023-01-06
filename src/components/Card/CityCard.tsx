@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import './CityCard.css'
 import Card from '@mui/material/Card'
 import IconButton from '@mui/material/IconButton'
 import { red, grey } from '@mui/material/colors'
@@ -11,10 +10,10 @@ import DeleteSweepIcon from '@mui/icons-material/DeleteSweep'
 import Grid from '@mui/material/Grid'
 import { Weather } from '../../store/types/types'
 import { selectCurrentWeatherData } from '../../store/selectors'
-
 import GlobalSvgSelector from '../../assets/icons/global/GlobalSvgSelector'
 import { useCustomSelector, useCustomDispatch } from '../../hooks/store'
 import { fetchCurrentWeather } from '../../store/thunks/fetchCurrentWeather'
+import './CityCard.css'
 
 const ONE_SECOND_IN_MILLISECOND = 1000
 
@@ -23,8 +22,7 @@ interface Props {
 }
 
 function CityCard ({ cityName }: Props): JSX.Element {
-  const { weather }: { weather: Weather } = useCustomSelector(selectCurrentWeatherData)
-
+  const { weather: weathers }: { weather: Weather[] } = useCustomSelector(selectCurrentWeatherData)
   const dispatch = useCustomDispatch()
 
   useEffect(() => {
@@ -33,8 +31,11 @@ function CityCard ({ cityName }: Props): JSX.Element {
     }
   }, [])
 
+  const weather: Weather | undefined = weathers.find((cityInfo: Weather) => cityInfo.name === cityName)
+
   return (
-    <div className="card">
+    (weather != null)
+      ? <div className="card">
         <Card>
             <CardContent sx={{ ml: 1 }}>
                 <Grid container spacing={1} direction="row"
@@ -101,6 +102,7 @@ function CityCard ({ cityName }: Props): JSX.Element {
             </CardActions>
         </Card>
     </div>
+      : <></>
   )
 }
 

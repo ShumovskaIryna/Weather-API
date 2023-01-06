@@ -29,16 +29,15 @@ export const CityCards: React.FC<Props> = (props) => {
             justifyContent="center"
             alignItems="center" color="text.secondary">
             {
-              cities.map((cityName: string): JSX.Element => {
+              cities.map((cityName: string, index: number): JSX.Element => {
                 return (
-                  <NavLink to={`details/${cityName}`}
-                  key={cityName}
-                  >
-                    <CityCard
-                    key={cityName}
-                    cityName={cityName}
-                    />
-                  </NavLink>
+                <NavLink to={`details/${cityName}`}
+                key={index}
+                >
+                  <CityCard
+                  cityName={cityName}
+                  />
+                </NavLink>
                 )
               })
             }

@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios'
 import { Weather } from '../types/types'
 
 interface CurrentWeather {
-  weather: Weather
+  weather: Weather[]
   isLoading: boolean
   response: Response
 }
@@ -14,7 +14,7 @@ interface Response {
 }
 
 const initialState: CurrentWeather = {
-  weather: {
+  weather: [{
     coord: {
       lon: 2.3488,
       lat: 48.8534
@@ -51,7 +51,7 @@ const initialState: CurrentWeather = {
       speed: 6.69,
       deg: 170
     }
-  },
+  }],
   isLoading: false,
   response: {
     status: 0,
@@ -71,7 +71,7 @@ export const currentWeatherSlice = createSlice({
       action: PayloadAction<AxiosResponse<Weather>>
     ) {
       state.isLoading = false
-      state.weather = action.payload.data
+      state.weather = [...state.weather, action.payload.data]
       state.response = {
         status: action.payload.status,
         message: action.payload.statusText
