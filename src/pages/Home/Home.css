@@ -4,7 +4,7 @@ margin: 0;
 
 .homeContainer {
   background-color: #c3ebf7;
-  height: 100vh;
+  height: auto;
 }
 .wrapper {
   display: flex;
