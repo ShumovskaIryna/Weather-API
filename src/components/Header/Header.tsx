@@ -1,11 +1,14 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable @typescript-eslint/no-misused-promises */
-import React, { ChangeEvent } from 'react'
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+import React, { ChangeEvent, useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search'
 import './Header.css'
 import { NavLink } from 'react-router-dom'
 import Suggestions from '../Suggestions/Suggestions'
 import { optionType } from './../../store/types/types'
+import { Credential } from '../../env-values'
 
 interface Props {
   term: string
@@ -13,20 +16,53 @@ interface Props {
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void
   onOptionSelect: (option: optionType) => void
   addCity: (city: string) => void
+  isDisabledInput?: boolean
 }
 
+const BASE_URL = 'http://api.openweathermap.org'
+
 function Header ({
-  term,
-  options,
-  onInputChange,
-  onOptionSelect,
-  addCity
+  addCity,
+  isDisabledInput
 }: Props): JSX.Element {
+  const [city, setCityWithOptions] = useState<optionType | null>(null)
+  const [term, setTerm] = useState<string>('')
+  const [options, setOptions] = useState<[]>([])
+
+  const getSearchOptions = (term: string): void => {
+    fetch(
+      `${BASE_URL}/geo/1.0/direct?q=${term.trim()}&limit=5&lang=en&appid=${
+        Credential.API_KEY
+      }`
+    )
+      .then(async (res) => await res.json())
+      .then((data) => {
+        console.log(333, data)
+        setOptions(data)
+      })
+      .catch((e) => console.log({ e }))
+  }
+
+  const onOptionSelect = (option: optionType): void => {
+    setCityWithOptions(option)
+    setTerm(option.name)
+    console.log(option, 'option')
+  }
+
   const submitHandler = (event: React.SyntheticEvent): void => {
     const target = event.target as typeof event.target & {
       city: { value: string }
     }
     addCity(target.city.value)
+  }
+
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const value = e.target.value.trim()
+    setTerm(e.target.value)
+
+    if (value !== '') {
+      getSearchOptions(value)
+    }
   }
 
   return (
@@ -45,10 +81,16 @@ function Header ({
               className="searchInput"
               onChange={onInputChange}
               placeholder="Search for city"
+              disabled={isDisabledInput}
             />
-            <Suggestions options={options} onSelect={onOptionSelect} />
+            <Suggestions
+              placeHolder='Selected....'
+              options={options}
+              onSelect={onOptionSelect} />
             <button
               className="search_btn"
+              type="submit"
+              disabled={isDisabledInput}
             >
               Add
             </button>

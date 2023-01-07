@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import { useState, useEffect, ChangeEvent } from 'react'
+import { useState, ChangeEvent } from 'react'
 import { optionType } from './../store/types/types'
 import { Credential } from '../env-values'
 
@@ -37,13 +37,6 @@ const useForecast = () => {
       getSearchOptions(value)
     }
   }
-
-  useEffect(() => {
-    if (city != null) {
-      setTerm(city.name)
-      setOptions([])
-    }
-  }, [city])
 
   return {
     options,

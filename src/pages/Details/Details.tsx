@@ -27,7 +27,6 @@ export const Details: React.FC<Props> = (props) => {
   } = useForecast()
 
   const { cityName } = useParams<{ cityName: string }>()
-
   const dispatch = useCustomDispatch()
   const { weather: weathers }: { weather: Weather[] } = useCustomSelector(selectCurrentWeatherData)
   const weather: Weather | undefined = weathers.find((cityInfo: Weather) => cityInfo.name === cityName)
@@ -61,7 +60,8 @@ export const Details: React.FC<Props> = (props) => {
             options={options}
             onInputChange={onInputChange}
             onOptionSelect={onOptionSelect}
-            addCity={addCityHandler}/>
+            addCity={addCityHandler}
+            isDisabledInput={true}/>
         </div>
         <Grid container spacing={3} direction="row"
           justifyContent="center"
