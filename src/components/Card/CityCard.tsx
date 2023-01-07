@@ -8,10 +8,10 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep'
 import Grid from '@mui/material/Grid'
-import { Weather } from '../../store/types/types'
 import { selectCurrentWeatherData } from '../../store/selectors'
 import GlobalSvgSelector from '../../assets/icons/global/GlobalSvgSelector'
 import { useCustomSelector, useCustomDispatch } from '../../hooks/store'
+import { NavLink } from 'react-router-dom'
 import { fetchCurrentWeather } from '../../store/thunks/fetchCurrentWeather'
 import './CityCard.css'
 
@@ -22,27 +22,31 @@ interface Props {
 }
 
 function CityCard ({ cityName }: Props): JSX.Element {
-  const { weather: weathers }: { weather: Weather[] } = useCustomSelector(selectCurrentWeatherData)
+  const { weathersMap } = useCustomSelector(selectCurrentWeatherData)
   const dispatch = useCustomDispatch()
-
+  const weather = weathersMap[cityName]
   useEffect(() => {
     if (cityName != null) {
       void dispatch(fetchCurrentWeather(cityName))
     }
   }, [])
 
-  const weather: Weather | undefined = weathers.find((cityInfo: Weather) => cityInfo.name === cityName)
+  const getRefreshCard = (cityName: string): void => {
+    void dispatch(fetchCurrentWeather(cityName))
+    console.log('refresh', weathersMap)
+  }
 
   return (
     (weather != null)
       ? <div className="card">
         <Card>
-            <CardContent sx={{ ml: 1 }}>
-                <Grid container spacing={1} direction="row"
-                    justifyContent="center"
-                    alignItems="center" color="text.secondary">
-                    <Typography sx={{ mt: 1, mb: 1, fontSize: 20 }} color="text.secondary">
-                        {weather.name}, {weather.sys.country}
+            <NavLink to={`details/${cityName}`} className="card_content">
+                <CardContent sx={{ ml: 1 }}>
+                    <Grid container spacing={1} direction="row"
+                        justifyContent="center"
+                        alignItems="center" color="text.secondary">
+                        <Typography sx={{ mt: 1, mb: 1, fontSize: 20 }} color="text.secondary">
+                        {cityName}, {weather.sys.country}
                     </Typography>
                 </Grid>
                 <Grid container spacing={2}>
@@ -88,10 +92,12 @@ function CityCard ({ cityName }: Props): JSX.Element {
                     </Grid>
                 </Grid>
             </CardContent>
+            </NavLink>
             <CardActions sx={{ ml: 1 }}>
                 <Grid container spacing={2}>
                     <Grid item xs={9}>
-                        <Button sx={{ mr: 8.5 }} size="small">Refresh</Button>
+                        <Button sx={{ mr: 8.5 }} size="small"
+                        onClick={() => getRefreshCard(cityName)} >Refresh</Button>
                     </Grid>
                     <Grid item xs={2}>
                         <IconButton aria-label="settings">

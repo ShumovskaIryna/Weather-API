@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CityCard from '../Card/CityCard'
 import Grid from '@mui/material/Grid'
-import { NavLink } from 'react-router-dom'
 import './Cards.css'
 
 interface Props {
@@ -29,13 +28,10 @@ export const CityCards: React.FC<Props> = (props) => {
             {
               cities.map((cityName: string, index: number): JSX.Element => {
                 return (
-                <NavLink to={`details/${cityName}`}
-                key={index}
-                >
                   <CityCard
                   cityName={cityName}
+                  key={index}
                   />
-                </NavLink>
                 )
               })
             }
