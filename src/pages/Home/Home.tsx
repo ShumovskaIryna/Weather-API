@@ -11,7 +11,6 @@ export const Home: React.FC<Props> = (props) => {
     options,
     term,
     onOptionSelect,
-    onSubmit,
     onInputChange
   } = useForecast()
 
@@ -25,8 +24,6 @@ export const Home: React.FC<Props> = (props) => {
     if (cityName != null) {
       localStorage.setItem(`CITY_${cityName}`, '')
     }
-
-    console.log(3333, city)
   }
 
   return (
@@ -37,12 +34,10 @@ export const Home: React.FC<Props> = (props) => {
           options={options}
           onInputChange={onInputChange}
           onOptionSelect={onOptionSelect}
-          addCity={addCityHandler}
-          onSubmit={onSubmit}/>
+          addCity={addCityHandler}/>
       </div>
       <div className="wrapper">
         <Cards
-          // city={city}
         />
       </div>
     </div>

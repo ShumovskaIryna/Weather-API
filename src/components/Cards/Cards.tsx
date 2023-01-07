@@ -5,8 +5,8 @@ import { NavLink } from 'react-router-dom'
 import './Cards.css'
 
 interface Props {
-  // city: string
 }
+
 export const CityCards: React.FC<Props> = (props) => {
   const [cities, setCities] = useState([] as string[])
 
@@ -20,12 +20,10 @@ export const CityCards: React.FC<Props> = (props) => {
     setCities(citiesNamesFromLocalStorage)
   }, [])
 
-  console.log('I AM FROM CARDS', cities)
-
   return (
     <div className="cards">
       <div className="container">
-      <Grid container spacing={1} direction="row"
+        <Grid container spacing={1} direction="row"
             justifyContent="center"
             alignItems="center" color="text.secondary">
             {

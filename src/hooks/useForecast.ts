@@ -13,7 +13,6 @@ const useForecast = () => {
   const [city, setCity] = useState<optionType | null>(null)
   const [term, setTerm] = useState<string>('')
   const [options, setOptions] = useState<[]>([])
-  // const [forecast, setForecast] = useState<Weather | null>(null)
 
   const getSearchOptions = (term: string): void => {
     fetch(
@@ -25,20 +24,6 @@ const useForecast = () => {
       .then((data) => setOptions(data))
       .catch((e) => console.log({ e }))
   }
-
-  // const [citiesList, setCitiesList] = useState<[]>([])
-
-  const onSubmit = (): void => {
-    if (city != null) {
-      setTerm(city.name)
-      setOptions([])
-    }
-  }
-  useEffect(() => {
-    if (city != null) {
-      setCity(city)
-    }
-  }, [city])
 
   const onOptionSelect = (option: optionType): void => {
     setCity(option)
@@ -61,12 +46,10 @@ const useForecast = () => {
   }, [city])
 
   return {
-    // forecast,
     options,
     term,
     city,
     onOptionSelect,
-    onSubmit,
     onInputChange
   }
 }

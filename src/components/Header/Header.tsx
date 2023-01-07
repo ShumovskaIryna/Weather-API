@@ -12,7 +12,6 @@ interface Props {
   options: []
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void
   onOptionSelect: (option: optionType) => void
-  onSubmit: () => void
   addCity: (city: string) => void
 }
 
@@ -21,7 +20,6 @@ function Header ({
   options,
   onInputChange,
   onOptionSelect,
-  onSubmit,
   addCity
 }: Props): JSX.Element {
   const submitHandler = (event: React.SyntheticEvent): void => {
@@ -37,9 +35,8 @@ function Header ({
         <NavLink to="/" className="logo">Weather</NavLink>
       </div>
       <div className="headerCenter">
-
-        <div className="searchbar">
-          <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler}>
+          <div className="searchbar">
             <SearchIcon sx={{ mr: 1, ml: 2, fontSize: 28 }} />
             <input
               type="text"
@@ -55,8 +52,8 @@ function Header ({
             >
               Add
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   )

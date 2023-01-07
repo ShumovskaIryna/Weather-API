@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {
-  useParams
-} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Weather } from '../../store/types/types'
 import Header from '../../components/Header/Header'
 import { red } from '@mui/material/colors'
@@ -25,7 +23,6 @@ export const Details: React.FC<Props> = (props) => {
     options,
     term,
     onOptionSelect,
-    onSubmit,
     onInputChange
   } = useForecast()
 
@@ -64,8 +61,7 @@ export const Details: React.FC<Props> = (props) => {
             options={options}
             onInputChange={onInputChange}
             onOptionSelect={onOptionSelect}
-            addCity={addCityHandler}
-            onSubmit={onSubmit}/>
+            addCity={addCityHandler}/>
         </div>
         <Grid container spacing={3} direction="row"
           justifyContent="center"
