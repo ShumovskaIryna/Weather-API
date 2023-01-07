@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Weather } from '../../store/types/types'
 import Header from '../../components/Header/Header'
 import { red } from '@mui/material/colors'
 import Grid from '@mui/material/Grid'
@@ -26,13 +25,13 @@ export const Details: React.FC<Props> = (props) => {
     onInputChange
   } = useForecast()
 
-  const { cityName } = useParams<{ cityName: string }>()
+  const { cityName = '' } = useParams<{ cityName: string }>()
+
   const dispatch = useCustomDispatch()
-  const { weather: weathers }: { weather: Weather[] } = useCustomSelector(selectCurrentWeatherData)
-  const weather: Weather | undefined = weathers.find((cityInfo: Weather) => cityInfo.name === cityName)
+  const { weathersMap } = useCustomSelector(selectCurrentWeatherData)
 
   if (cityName != null) {
-    localStorage.setItem(`CITY_${cityName}`, JSON.stringify(weather))
+    localStorage.setItem(`CITY_${cityName}`, JSON.stringify(weathersMap))
   }
 
   const [city, setCity] = useState('')
@@ -52,7 +51,7 @@ export const Details: React.FC<Props> = (props) => {
   }, [cityName])
 
   return (
-    (weather != null)
+    (weathersMap != null)
       ? <div className="detailContainer">
         <div className="wrapper">
           <Header
@@ -78,9 +77,9 @@ export const Details: React.FC<Props> = (props) => {
         <Grid container spacing={1} direction="row"
           justifyContent="center"
           alignItems="center" color="text.secondary">
-            <DetailCardMain weather={weather}/>
-            <DetailCardCondition weather={weather}/>
-            <DetailCardForecast weather={weather}/>
+            <DetailCardMain weathersMap={weathersMap} cityName={cityName}/>
+            <DetailCardCondition weathersMap={weathersMap} cityName={cityName}/>
+            <DetailCardForecast weathersMap={weathersMap} cityName={cityName}/>
         </Grid>
       </div>
       : <></>

@@ -9,12 +9,14 @@ import { Weather } from '../../store/types/types'
 import './DetailCardForecast.css'
 
 interface Props {
-  weather: Weather
+  weathersMap: Record<string, Weather>
+  cityName: string
 }
 
 const ONE_SECOND_IN_MILLISECOND = 1000
 
-function DetailCardForecast ({ weather }: Props): JSX.Element {
+function DetailCardForecast ({ weathersMap, cityName }: Props): JSX.Element {
+  const weather = weathersMap[cityName]
   return (
     <div className="card_third">
       <Card sx={{ mt: 1, mb: 5 }}>

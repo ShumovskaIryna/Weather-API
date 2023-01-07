@@ -9,12 +9,15 @@ import GlobalSvgSelector from '../../assets/icons/global/GlobalSvgSelector'
 import './DetailCardMain.css'
 
 interface Props {
-  weather: Weather
+  weathersMap: Record<string, Weather>
+  cityName: string
 }
 
 const ONE_SECOND_IN_MILLISECOND = 1000
 
-function DetailCardMain ({ weather }: Props): JSX.Element {
+function DetailCardMain ({ weathersMap, cityName }: Props): JSX.Element {
+  const weather = weathersMap[cityName]
+
   return (
     <div className="card_first">
         <Card>
@@ -23,7 +26,7 @@ function DetailCardMain ({ weather }: Props): JSX.Element {
                     justifyContent="center"
                     alignItems="center" color="text.secondary">
                     <Typography sx={{ mt: 1, fontSize: 20 }}>
-                        {weather.name}, {weather.sys.country}
+                        {cityName}, {weather.sys.country}
                     </Typography>
                 </Grid>
                 <Grid container spacing={1}>

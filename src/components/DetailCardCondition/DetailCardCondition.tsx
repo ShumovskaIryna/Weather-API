@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -8,12 +9,15 @@ import { Weather } from '../../store/types/types'
 import './DetailCardCondition.css'
 
 interface Props {
-  weather: Weather
+  weathersMap: Record<string, Weather>
+  cityName: string
 }
 
 const ONE_SECOND_IN_MILLISECOND = 1000
 
-function DetailCardCondition ({ weather }: Props): JSX.Element {
+function DetailCardCondition ({ weathersMap, cityName }: Props): JSX.Element {
+  const weather = weathersMap[cityName]
+
   return (
     <div className="card_second">
       <Card sx={{ pt: 1, pb: 1 }}>
