@@ -11,10 +11,6 @@ import { optionType } from './../../store/types/types'
 import { Credential } from '../../env-values'
 
 interface Props {
-  term: string
-  options: []
-  onInputChange: (e: ChangeEvent<HTMLInputElement>) => void
-  onOptionSelect: (option: optionType) => void
   addCity: (city: string) => void
   isDisabledInput?: boolean
 }
@@ -25,7 +21,7 @@ function Header ({
   addCity,
   isDisabledInput
 }: Props): JSX.Element {
-  const [city, setCityWithOptions] = useState<optionType | null>(null)
+  const [, setCityWithOptions] = useState<optionType | null>(null)
   const [term, setTerm] = useState<string>('')
   const [options, setOptions] = useState<[]>([])
 
@@ -37,7 +33,6 @@ function Header ({
     )
       .then(async (res) => await res.json())
       .then((data) => {
-        console.log(333, data)
         setOptions(data)
       })
       .catch((e) => console.log({ e }))
@@ -46,7 +41,6 @@ function Header ({
   const onOptionSelect = (option: optionType): void => {
     setCityWithOptions(option)
     setTerm(option.name)
-    console.log(option, 'option')
   }
 
   const submitHandler = (event: React.SyntheticEvent): void => {

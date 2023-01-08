@@ -12,19 +12,11 @@ import { selectCurrentWeatherData } from '../../store/selectors'
 import DetailCardMain from '../../components/DetailCardMain/DetailCardMain'
 import DetailCardCondition from '../../components/DetailCardCondition/DetailCardCondition'
 import DetailCardForecast from '../../components/DetailCardForecast/DetailCardForecast'
-import useForecast from './../../hooks/useForecast'
 import './Details.css'
 
 interface Props {}
 
 export const Details: React.FC<Props> = (props) => {
-  const {
-    options,
-    term,
-    onOptionSelect,
-    onInputChange
-  } = useForecast()
-
   const { cityName = '' } = useParams<{ cityName: string }>()
 
   const dispatch = useCustomDispatch()
@@ -55,10 +47,6 @@ export const Details: React.FC<Props> = (props) => {
       ? <div className="detailContainer">
         <div className="wrapper">
           <Header
-            term={term}
-            options={options}
-            onInputChange={onInputChange}
-            onOptionSelect={onOptionSelect}
             addCity={addCityHandler}
             isDisabledInput={true}/>
         </div>

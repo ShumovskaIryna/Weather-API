@@ -3,6 +3,7 @@ export interface optionType {
   country: string
   lat: number
   lon: number
+  id?: number
 }
 
 export interface Weather {
