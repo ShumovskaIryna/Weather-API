@@ -12,16 +12,17 @@ import { selectCurrentWeatherData } from '../../store/selectors'
 import GlobalSvgSelector from '../../assets/icons/global/GlobalSvgSelector'
 import { useCustomSelector, useCustomDispatch } from '../../hooks/store'
 import { NavLink } from 'react-router-dom'
-import { fetchCurrentWeather } from '../../store/thunks/fetchCurrentWeather'
+import { fetchCurrentWeather, deleteCityByName } from '../../store/thunks/fetchCurrentWeather'
 import './CityCard.css'
 
 const ONE_SECOND_IN_MILLISECOND = 1000
 
 interface Props {
   cityName: string
+  deleteCityCard: (city: string) => void
 }
 
-function CityCard ({ cityName }: Props): JSX.Element {
+function CityCard ({ cityName, deleteCityCard }: Props): JSX.Element {
   const { weathersMap } = useCustomSelector(selectCurrentWeatherData)
   const dispatch = useCustomDispatch()
   const weather = weathersMap[cityName]
@@ -33,7 +34,11 @@ function CityCard ({ cityName }: Props): JSX.Element {
 
   const getRefreshCard = (cityName: string): void => {
     void dispatch(fetchCurrentWeather(cityName))
-    console.log('refresh', weathersMap)
+  }
+  const deleteCard = (cityName: string): void => {
+    console.log(cityName)
+    deleteCityCard(cityName)
+    void dispatch(deleteCityByName(cityName))
   }
 
   return (
@@ -100,7 +105,8 @@ function CityCard ({ cityName }: Props): JSX.Element {
                         onClick={() => getRefreshCard(cityName)} >Refresh</Button>
                     </Grid>
                     <Grid item xs={2}>
-                        <IconButton aria-label="settings">
+                        <IconButton aria-label="settings"
+                        onClick={() => deleteCard(cityName)}>
                             <DeleteSweepIcon sx={{ color: red[400], fontSize: 24 }}/>
                         </IconButton>
                     </Grid>

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction, current } from '@reduxjs/toolkit'
 import { AxiosResponse } from 'axios'
 import { Weather } from '../types/types'
 
@@ -129,6 +129,16 @@ export const currentWeatherSlice = createSlice({
         status: action.payload.status,
         message: action.payload.statusText
       }
+    },
+    deleteCurrentWeatherSuccess (
+      state,
+      action: PayloadAction<{ cityName: string }>
+    ) {
+      console.log(current(state), '333333')
+
+      state.isLoading = false
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+      delete state.weathersMap[action.payload.cityName]
     }
   }
 })

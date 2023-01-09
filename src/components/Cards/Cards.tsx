@@ -4,9 +4,10 @@ import Grid from '@mui/material/Grid'
 import './Cards.css'
 
 interface Props {
+  deleteCity: (city: string) => void
 }
 
-export const CityCards: React.FC<Props> = (props) => {
+function CityCards ({ deleteCity }: Props): JSX.Element {
   const [cities, setCities] = useState([] as string[])
 
   useEffect(() => {
@@ -30,7 +31,8 @@ export const CityCards: React.FC<Props> = (props) => {
                 return (
                   <CityCard
                   cityName={cityName}
-                  key={index}
+                  key={`${index}-${index}`}
+                  deleteCityCard={deleteCity}
                   />
                 )
               })

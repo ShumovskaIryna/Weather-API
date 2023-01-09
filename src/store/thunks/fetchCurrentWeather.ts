@@ -17,4 +17,6 @@ export const fetchCurrentWeather =
     }
   }
 
-// export const getForecastWeather = () => {}
+export const deleteCityByName = (cityName: string) => (dispatch: AppDispatch) => {
+  dispatch(currentWeatherSlice.actions.deleteCurrentWeatherSuccess({ cityName }))
+}
