@@ -26,25 +26,25 @@ function DetailCardMain ({ weathersMap, cityName }: Props): JSX.Element {
                     justifyContent="center"
                     alignItems="center" color="text.secondary">
                     <Typography sx={{ mt: 1, fontSize: 20 }}>
-                        {cityName}, {weather.sys.country}
+                        {cityName}, {weather?.sys.country}
                     </Typography>
                 </Grid>
                 <Grid container spacing={1}>
-                    <Grid item xs={4}>
+                    <Grid item xs={5}>
                         <Typography sx={{ fontSize: 50, color: grey[800] }}>
-                            {Math.floor(weather.main.temp)}°C
+                            {Math.floor(weather?.main.temp)}°C
                         </Typography>
                         <Typography sx={{ fontSize: 40, color: grey[600] }}>
-                            {Math.floor(weather.main.feels_like)}°C
+                            {Math.floor(weather?.main.feels_like)}°C
                         </Typography>
                     </Grid>
-                    <Grid item xs={8}>
-                        <GlobalSvgSelector id={weather.weather[0].icon}/>
+                    <Grid item xs={7}>
+                        <GlobalSvgSelector id={weather?.weather[0].icon}/>
                     </Grid>
                     <Grid item xs={12}>
                         <Typography sx={{ mb: 1, fontSize: 18, color: grey[600] }}>
-                            Today {new Date(weather.dt * ONE_SECOND_IN_MILLISECOND +
-                            (weather.timezone * ONE_SECOND_IN_MILLISECOND)).toLocaleString('en-US',
+                            Today {new Date(weather?.dt * ONE_SECOND_IN_MILLISECOND +
+                            (weather?.timezone * ONE_SECOND_IN_MILLISECOND)).toLocaleString('en-US',
                           {
                             month: 'long',
                             day: 'numeric',
@@ -54,7 +54,7 @@ function DetailCardMain ({ weathersMap, cityName }: Props): JSX.Element {
                         </Grid>
                         <Grid item xs={12}>
                         <Typography sx={{ mb: 1, fontSize: 14, color: grey[600] }}>
-                            {weather.weather[0].description}
+                            {weather?.weather[0].description}
                         </Typography>
                     </Grid>
                 </Grid>

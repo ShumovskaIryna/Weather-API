@@ -33,7 +33,8 @@ function DetailCardCondition ({ weathersMap, cityName }: Props): JSX.Element {
                             </Grid>
                             <Grid item xs={10}>
                                 <Typography sx={{ mb: 2, fontSize: 14 }} color="text.secondary">
-                                    Temperature : {Math.floor(weather.main.temp)}°C, real fell {Math.floor(weather.main.feels_like)}°C
+                                    Temperature : {Math.floor(weather?.main.temp)}°C,
+                                    real fell {Math.floor(weather?.main.feels_like)}°C
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -45,7 +46,7 @@ function DetailCardCondition ({ weathersMap, cityName }: Props): JSX.Element {
                             </Grid>
                             <Grid item xs={10}>
                                 <Typography sx={{ mb: 2, fontSize: 14 }} color="text.secondary">
-                                    Pressure : {Math.floor(weather.main.pressure)} mm
+                                    Pressure : {Math.floor(weather?.main.pressure)} mm
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -57,7 +58,7 @@ function DetailCardCondition ({ weathersMap, cityName }: Props): JSX.Element {
                             </Grid>
                             <Grid item xs={10}>
                                 <Typography sx={{ mb: 2, fontSize: 14 }} color="text.secondary">
-                                    Humidity : {Math.floor(weather.main.humidity)} %
+                                    Humidity : {Math.floor(weather?.main.humidity)} %
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -69,7 +70,7 @@ function DetailCardCondition ({ weathersMap, cityName }: Props): JSX.Element {
                             </Grid>
                             <Grid item xs={10}>
                                 <Typography sx={{ mb: 2, fontSize: 14 }} color="text.secondary">
-                                    Wind speed : {Math.floor(weather.wind.speed)} km/h
+                                    Wind speed : {Math.floor(weather?.wind.speed)} km/h
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -81,10 +82,10 @@ function DetailCardCondition ({ weathersMap, cityName }: Props): JSX.Element {
                             </Grid>
                             <Grid item xs={10}>
                                 <Typography sx={{ mb: 2, fontSize: 14 }} color="text.secondary">
-                                    Sunrise : {new Date(weather.sys.sunrise * ONE_SECOND_IN_MILLISECOND +
-                                            (weather.timezone * ONE_SECOND_IN_MILLISECOND)).toLocaleTimeString('en-US')},
-                                    Sunset : {new Date(weather.sys.sunset * ONE_SECOND_IN_MILLISECOND +
-                                            (weather.timezone * ONE_SECOND_IN_MILLISECOND)).toLocaleTimeString('en-US')}
+                                    Sunrise : {new Date(weather?.sys.sunrise * ONE_SECOND_IN_MILLISECOND +
+                                            (weather?.timezone * ONE_SECOND_IN_MILLISECOND)).toLocaleTimeString('en-US')},
+                                    Sunset : {new Date(weather?.sys.sunset * ONE_SECOND_IN_MILLISECOND +
+                                            (weather?.timezone * ONE_SECOND_IN_MILLISECOND)).toLocaleTimeString('en-US')}
                                 </Typography>
                             </Grid>
                         </Grid>
