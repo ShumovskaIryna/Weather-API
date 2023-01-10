@@ -13,7 +13,6 @@ interface componentProps {
 const Suggestions = ({ placeHolder, options, onSelect }: componentProps): JSX.Element => {
   const [shownMenu, setShownMenu] = React.useState(true)
   const [selectedValue, setSelectedValue] = React.useState<optionType>()
-  console.log(options, 12)
   React.useEffect(() => {
     const handler = (): void => setShownMenu(true)
 
@@ -26,7 +25,6 @@ const Suggestions = ({ placeHolder, options, onSelect }: componentProps): JSX.El
 
   const handleInputClick = (e: { stopPropagation: () => void }): void => {
     e.stopPropagation()
-
     setShownMenu(() => !shownMenu)
   }
 
@@ -34,12 +32,10 @@ const Suggestions = ({ placeHolder, options, onSelect }: componentProps): JSX.El
     if (selectedValue != null) {
       return selectedValue.name
     }
-
     return placeHolder
   }
 
   const onItemClick = (option: optionType): void => {
-    console.log(onItemClick, 'Suggestion')
     onSelect(option)
   }
   const isSelected = (option: optionType): boolean => {

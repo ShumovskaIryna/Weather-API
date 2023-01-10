@@ -18,7 +18,6 @@ interface Props {
 const ONE_SECOND_IN_MILLISECOND = 1000
 
 function HourForecast ({ listItem, cityItems }: Props): JSX.Element {
-  console.log(listItem, '1day')
   return (
     <div className="day_card">
         <Card sx={{ bgcolor: indigo[50] }}>

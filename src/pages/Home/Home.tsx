@@ -7,7 +7,7 @@ interface Props {}
 
 export const Home: React.FC<Props> = () => {
   const [, setCity] = useState('')
-  const [cities, setCities] = useState([] as string[])
+  const [, setCities] = useState([] as string[])
 
   const addCityHandler = (cityName: string): void => {
     setCity((): string => {
