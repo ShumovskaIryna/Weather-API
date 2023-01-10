@@ -6,6 +6,49 @@ export interface optionType {
   id?: number
 }
 
+export interface listType {
+  dt: number
+  main: {
+    feels_like: number
+    humidity: number
+    pressure: number
+    temp: number
+    temp_max: number
+    temp_min: number
+  }
+  weather: [
+    {
+      main: string
+      icon: string
+      description: string
+    }
+  ]
+  wind: {
+    speed: number
+    gust: number
+    deg: number
+  }
+  clouds: {
+    all: number
+  }
+  pop: number
+  visibility: number
+}
+
+export interface cityType {
+  id: number
+  name: string
+  coord: {
+    lat: number
+    lon: number
+  }
+  country: string
+  population: number
+  timezone: number
+  sunrise: number
+  sunset: number
+}
+
 export interface Weather {
   coord: {
     lon: number
