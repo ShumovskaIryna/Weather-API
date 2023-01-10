@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Header from '../../components/Header/Header'
@@ -8,7 +9,8 @@ import Button from '@mui/material/Button'
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep'
 import { useCustomDispatch, useCustomSelector } from '../../hooks/store'
 import { fetchCurrentWeather } from '../../store/thunks/fetchCurrentWeather'
-import { selectCurrentWeatherData } from '../../store/selectors'
+import { fetchForecastWeather } from '../../store/thunks/fetchForecastWeather'
+import { selectCurrentWeatherData, selectForecastWeatherData } from '../../store/selectors'
 import DetailCardMain from '../../components/DetailCardMain/DetailCardMain'
 import DetailCardCondition from '../../components/DetailCardCondition/DetailCardCondition'
 import DetailCardForecast from '../../components/DetailCardForecast/DetailCardForecast'
@@ -21,12 +23,13 @@ export const Details: React.FC<Props> = (props) => {
 
   const dispatch = useCustomDispatch()
   const { weathersMap } = useCustomSelector(selectCurrentWeatherData)
+  const { forecastMap } = useCustomSelector(selectForecastWeatherData)
 
   if (cityName != null) {
     localStorage.setItem(`CITY_${cityName}`, JSON.stringify(weathersMap))
   }
 
-  const [city, setCity] = useState('')
+  const [, setCity] = useState('')
   const addCityHandler = (city: string): void => {
     console.log(city)
     setCity((): string => {
@@ -37,7 +40,7 @@ export const Details: React.FC<Props> = (props) => {
   useEffect(() => {
     if (cityName != null) {
       void dispatch(fetchCurrentWeather(cityName))
-
+      void dispatch(fetchForecastWeather(cityName))
       window.history.replaceState(null, 'New Page Title', `/details/${cityName}`)
     }
   }, [cityName])
@@ -67,7 +70,7 @@ export const Details: React.FC<Props> = (props) => {
           alignItems="center" color="text.secondary">
             <DetailCardMain weathersMap={weathersMap} cityName={cityName}/>
             <DetailCardCondition weathersMap={weathersMap} cityName={cityName}/>
-            <DetailCardForecast weathersMap={weathersMap} cityName={cityName}/>
+            <DetailCardForecast forecastMap={forecastMap} cityName={cityName}/>
         </Grid>
       </div>
       : <></>
