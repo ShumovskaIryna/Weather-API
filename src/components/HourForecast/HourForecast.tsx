@@ -36,7 +36,7 @@ function HourForecast ({ listItem, cityItems }: Props): JSX.Element {
                           })}
                     </Typography>
                 </Grid>
-                <Grid container spacing={1} mb={-7} mt={-5} direction="row">
+                <Grid container spacing={1} mb={-6} mt={-4} direction="row">
                     <GlobalSvgSelector id={listItem?.weather[0].icon}/>
                 </Grid>
                 <Grid container spacing={2} direction="row">
