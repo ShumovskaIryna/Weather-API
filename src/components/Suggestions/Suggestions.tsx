@@ -56,7 +56,7 @@ const Suggestions = ({ placeHolder, options, onSelect }: componentProps): JSX.El
           <div className='suggestion_bar'>
             {
               options.map((option): JSX.Element => (
-                <div
+                <div className="suggestion_list"
                 onClick={() => onItemClick(option)}
                 key={`${option.country}-${option.name}`}
                 >

@@ -1,7 +1,7 @@
 .suggestion_bar{
     position: absolute;
-    top: 60%;
-    left: 35%;
+    top: 80%;
+    left: 30%;
     background-color: aliceblue;
     width: auto;
 }
@@ -12,10 +12,10 @@ li {
 .suggestion_list{
     text-align: start;
     font-size: medium;
-    width: 100%;
+    width: 90%;
     background-color: rgb(241, 243, 251);
     cursor: pointer;
-    padding: 10px 50px;
+    padding: 10px 30px;
     border: none;
     text-decoration: dotted;
 }
