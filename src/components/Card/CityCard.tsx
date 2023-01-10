@@ -36,7 +36,6 @@ function CityCard ({ cityName, deleteCityCard }: Props): JSX.Element {
     void dispatch(fetchCurrentWeather(cityName))
   }
   const deleteCard = (cityName: string): void => {
-    console.log(cityName)
     deleteCityCard(cityName)
     void dispatch(deleteCityByName(cityName))
   }
