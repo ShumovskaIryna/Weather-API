@@ -36,6 +36,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "test:watch": "jest --watch",
     "eject": "react-scripts eject"
@@ -86,6 +88,7 @@
     "eslint-plugin-n": "^15.6.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.31.11",
+    "gh-pages": "^4.0.0",
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
     "prettier": "2.8.1",
