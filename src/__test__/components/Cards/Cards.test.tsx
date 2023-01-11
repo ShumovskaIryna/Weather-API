@@ -1,13 +1,14 @@
 /* eslint-disable */
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import CityCard from '../../../components/Card/CityCard'
+import Suggestions from '../../../components/Suggestions/Suggestions'
+import { optionType } from '../../../store/types/types'
 
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 import { Actions, ThunkDispatch } from '@reduxjs/toolkit'
 
-const deleteCityCard = (cityName: string): void => {
+const deleteCityCard = (onSelect: optionType): void => {
   console.log(3)
 }
 
@@ -59,21 +60,31 @@ describe('With React Testing Library', () => {
 
 
 
-//   it('Shows "Hello world!"', async () => {
-//     store = mockStore(initialState)
+  it('Shows "Hello world!"', async () => {
+    const store = mockStore(initialState)
 
-//     await (store.dispatch as ThunkDispatch<any, unknown, any>)(asyncThunkWithRequest());
+    // await (store.dispatch as ThunkDispatch<any, unknown, any>)(asyncThunkWithRequest());
+    
+    const optionTypeCity =[ {
+      name: 'Lviv',
+      country: 'Ukraine',
+      lat: 43,
+      lon: 23,
+      id: 232342
+    }]
+    const result = render(
+      <Provider store={store}>
 
-//     const result = render(
-//       <Provider store={store}>
+          <Suggestions
+          placeHolder={'Lviv'}
+          options={optionTypeCity}
+          onSelect={deleteCityCard}
+        />
+      </Provider>
+        )
 
-//           <CityCard
-//           cityName='Kyiv'
-//           deleteCityCard={deleteCityCard}
-//         />
-//       </Provider>
-//         )
-//     console.log(result)
-//     // expect(getByText('Hello World!')).not.toBeNull()
-//   })
+        expect(result.container.firstChild).toBeEmpty()
+    console.log(result)
+    // expect(getByText('Hello World!')).not.toBeNull()
+  })
 })
