@@ -15,7 +15,7 @@ interface Props {
   isDisabledInput?: boolean
 }
 
-const BASE_URL = 'http://api.openweathermap.org'
+const BASE_URL = 'https://api.openweathermap.org'
 
 function Header ({
   addCity,
@@ -41,6 +41,7 @@ function Header ({
   const onOptionSelect = (option: optionType): void => {
     setCityWithOptions(option)
     setTerm(option.name)
+    setOptions([])
   }
 
   const submitHandler = (event: React.SyntheticEvent): void => {
