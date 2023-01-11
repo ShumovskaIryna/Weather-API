@@ -37,6 +37,7 @@ const Suggestions = ({ placeHolder, options, onSelect }: componentProps): JSX.El
 
   const onItemClick = (option: optionType): void => {
     onSelect(option)
+    setShownMenu(false)
   }
   const isSelected = (option: optionType): boolean => {
     return (selectedValue != null)
