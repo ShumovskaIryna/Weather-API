@@ -9,6 +9,12 @@ export const Home: React.FC<Props> = () => {
   const [, setCity] = useState('')
   const [, setCities] = useState([] as string[])
 
+  localStorage.setItem('CITY_Kyiv', '')
+  localStorage.setItem('CITY_Lviv', '')
+  localStorage.setItem('CITY_Mariupol', '')
+  localStorage.setItem('CITY_Odesa', '')
+  localStorage.setItem('CITY_Kharkiv', '')
+
   const addCityHandler = (cityName: string): void => {
     setCity((): string => {
       return cityName
