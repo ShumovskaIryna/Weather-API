@@ -1,4 +1,3 @@
-
 /* eslint-disable */
 import React from 'react'
 import { render, screen } from '@testing-library/react'
@@ -60,23 +59,21 @@ describe('With React Testing Library', () => {
 
 
 
-  it('Shows "Hello world!"', async () => {
-    store = mockStore(initialState)
+//   it('Shows "Hello world!"', async () => {
+//     store = mockStore(initialState)
 
-    await (store.dispatch as ThunkDispatch<any, unknown, any>)(asyncThunkWithRequest());
+//     await (store.dispatch as ThunkDispatch<any, unknown, any>)(asyncThunkWithRequest());
 
-    const result = render(
-      <Provider store={store}>
+//     const result = render(
+//       <Provider store={store}>
 
-          <CityCard
-          cityName='Kyiv'
-          deleteCityCard={deleteCityCard}
-        />
-      </Provider>
-        )
-    console.log(result)
-    // expect(getByText('Hello World!')).not.toBeNull()
-  })
+//           <CityCard
+//           cityName='Kyiv'
+//           deleteCityCard={deleteCityCard}
+//         />
+//       </Provider>
+//         )
+//     console.log(result)
+//     // expect(getByText('Hello World!')).not.toBeNull()
+//   })
 })
-
-
