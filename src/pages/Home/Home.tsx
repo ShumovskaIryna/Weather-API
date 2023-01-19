@@ -9,12 +9,6 @@ export const Home: React.FC<Props> = () => {
   const [, setCity] = useState('')
   const [, setCities] = useState([] as string[])
 
-  localStorage.setItem('CITY_Kyiv', '')
-  localStorage.setItem('CITY_Lviv', '')
-  localStorage.setItem('CITY_Mariupol', '')
-  localStorage.setItem('CITY_Odesa', '')
-  localStorage.setItem('CITY_Kharkiv', '')
-
   const addCityHandler = (cityName: string): void => {
     setCity((): string => {
       return cityName
@@ -38,6 +32,12 @@ export const Home: React.FC<Props> = () => {
       setCities(citiesNamesFromLocalStorage)
     }
   }
+  const addTempCity = (): void => {
+    localStorage.setItem('CITY_Kyiv', '')
+    localStorage.setItem('CITY_Lviv', '')
+    localStorage.setItem('CITY_Mariupol', '')
+    setCities(citiesNamesFromLocalStorage)
+  }
 
   return (
     <div className="homeContainer">
@@ -47,6 +47,7 @@ export const Home: React.FC<Props> = () => {
       </div>
       <div className="wrapper">
         <Cards deleteCity={removeCityHandler}
+        addTempCity={addTempCity}
         />
       </div>
     </div>

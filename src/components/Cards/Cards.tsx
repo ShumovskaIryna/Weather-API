@@ -5,9 +5,10 @@ import './Cards.css'
 
 interface Props {
   deleteCity: (city: string) => void
+  addTempCity: () => void
 }
 
-function CityCards ({ deleteCity }: Props): JSX.Element {
+function CityCards ({ deleteCity, addTempCity }: Props): JSX.Element {
   const [cities, setCities] = useState([] as string[])
 
   useEffect(() => {
@@ -20,9 +21,16 @@ function CityCards ({ deleteCity }: Props): JSX.Element {
     setCities(citiesNamesFromLocalStorage)
   }, [])
 
+  const addTempCityHandler = (): void => {
+    addTempCity()
+  }
+
   return (
     <div className="cards">
       <div className="container">
+      <button className="btn" onClick={() => addTempCityHandler()}>
+        Add template cities to list
+      </button>
         <Grid container spacing={1} direction="row"
             justifyContent="center"
             alignItems="center" color="text.secondary">

@@ -4,3 +4,7 @@
   height: 100%;
   cursor: pointer;
 }
+.btn {
+  margin: 10px;
+  padding: 8px;
+}
